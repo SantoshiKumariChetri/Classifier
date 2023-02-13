@@ -126,7 +126,7 @@ def upscale2d_conv2d(x, fmaps, kernel, gain=np.sqrt(2), use_wscale=False):
 #----------------------------------------------------------------------------
 # upscale2d for RGB image by upsampling + Gaussian smoothing
 
-gaussian_filter_up = tf.constant(list(np.float32([1,4,6,4,1,4,16,24,16,4,6,24,36,24,6,4,16,24,16,4,1,4,6,4,1])/256.0*4.0), dtype=tf.float32, shape=[5,5,1,1], name='GaussianFilterUp', verify_shape=False)
+gaussian_filter_up = tf.constant(list(np.float32([1,4,6,4,1,4,16,24,16,4,6,24,36,24,6,4,16,24,16,4,1,4,6,4,1])/256.0*4.0), dtype=tf.float32, shape=[5,5,1,1], name='GaussianFilterUp')
 
 def upscale2d_rgb_Gaussian(x, factor=2):
     assert isinstance(factor, int) and factor >= 1
@@ -173,7 +173,7 @@ def conv2d_downscale2d(x, fmaps, kernel, gain=np.sqrt(2), use_wscale=False):
 #----------------------------------------------------------------------------
 # downscale2d for RGB image by Gaussian smoothing + downsampling
 
-gaussian_filter_down = tf.constant(list(np.float32([1,4,6,4,1,4,16,24,16,4,6,24,36,24,6,4,16,24,16,4,1,4,6,4,1])/256.0), dtype=tf.float32, shape=[5,5,1,1], name='GaussianFilterDown', verify_shape=False)
+gaussian_filter_down = tf.constant(list(np.float32([1,4,6,4,1,4,16,24,16,4,6,24,36,24,6,4,16,24,16,4,1,4,6,4,1])/256.0), dtype=tf.float32, shape=[5,5,1,1], name='GaussianFilterDown')
 
 def downscale2d_rgb_Gaussian(x, factor=2):
     assert isinstance(factor, int) and factor >= 1
